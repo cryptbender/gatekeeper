@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 247 247 248;
+  --surface: 255 255 255;
+  --subtle: 243 243 245;
+  --line: 229 229 233;
+  --ink: 24 24 27;
+  --muted: 113 113 122;
+  --accent: 79 70 229;
+  --accent-ink: 255 255 255;
+  --ok: 5 150 105;
+  --danger: 220 38 38;
+  --warn: 217 119 6;
+  color-scheme: light;
+}
+.dark {
+  --bg: 9 9 11;
+  --surface: 20 20 23;
+  --subtle: 30 30 35;
+  --line: 44 44 50;
+  --ink: 244 244 245;
+  --muted: 161 161 170;
+  --accent: 129 140 248;
+  --accent-ink: 15 15 25;
+  --ok: 52 211 153;
+  --danger: 248 113 113;
+  --warn: 251 191 36;
+  color-scheme: dark;
+}
+
+html, body { height: 100%; }
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+* { @apply border-line; }
+::selection { background: rgb(var(--accent) / 0.25); }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 2px; }
+.safe-b { padding-bottom: env(safe-area-inset-bottom); }
+.safe-t { padding-top: env(safe-area-inset-top); }
+
+/* qr-scanner injects a canvas-less video; keep it covering */
+.scan-video { object-fit: cover; width: 100%; height: 100%; }
+
+/* hide number input spinners, tidy native date/time pickers */
+input[type="date"], input[type="time"] { min-height: 2.5rem; }
